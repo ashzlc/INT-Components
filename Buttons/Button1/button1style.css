@@ -1,0 +1,79 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    place-items: center;
+    font-family: system-ui;
+    font-size: 4rem;
+}
+
+.internest-btn1 {
+    font: inherit;
+    padding: 0.75em 3em;
+    background: hsl(185,53%, 15%);
+    border: 0.1em solid hsl(185, 53%, 34%);
+    border-radius: 100vw;
+    cursor: pointer;
+    transition: background-color 250ms;
+    color: white;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.internest-btn1:hover,
+.internest-btn1:focus-visible {
+    background: hsl(185, 53%, 34%);
+}
+
+.internest-btn1 > span {
+    position: absolute;
+    width: 33.333%;
+    height: 100%;
+    z-index: -1;
+    background-color: transparent;
+    opacity: 0.5;
+}
+
+.internest-btn1 > :first-child{
+    top: 0%;
+    left:0%;
+}
+
+.internest-btn1 > :last-child{
+    top: 0%;
+    right: 0%;
+}
+
+.internest-btn1::before {
+    content: "";
+    position: absolute;
+    background: hsl(200,60%, 20%);
+    width: 10%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    inset: 0;
+    z-index: -1;
+    margin: auto;
+    transition: transform 1000ms 200ms, opacity 200ms;
+    opacity: 0;
+}
+
+.internest-btn1:active::before {
+    transition: transform 1000ms, opacity 500ms;
+    transform: scale(20);
+    opacity: 1;
+}
+
+.internest-btn1:has(:first-child:active)::before{
+    margin-left: 0;
+}
+
+.internest-btn1:has(:last-child:active)::before {
+    margin-right: 0;
+}
+
+.internest-btn1:has(:first-child:active)::before
+.internest-btn1:has(:last-child:active)::before {
+    transition: transform 500ms, opacity 250ms;
+}
